@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050b18">
+<link rel="manifest" href="manifest.json">
+<title>A TECH STUDIO | Digital Services</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{--bg:#050b18;--card:rgba(13,27,51,.88);--blue:#00d9ff;--purple:#8b5cf6;--green:#00ffa3;--text:#f4f8ff;--muted:#9fb1ca;--border:rgba(0,217,255,.25)}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Poppins,sans-serif;background:radial-gradient(circle at 15% 20%,#073b65 0,transparent 35%),radial-gradient(circle at 85% 15%,#32105c 0,transparent 35%),#050b18;color:var(--text);min-height:100vh}
+header{position:sticky;top:0;z-index:10;background:rgba(3,10,25,.94);border-bottom:1px solid var(--border);padding:15px 5%;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;backdrop-filter:blur(14px)}
+.logo{font:800 21px Orbitron;color:var(--blue)}
+.logo span{color:white}
+nav{display:flex;gap:5px;flex-wrap:wrap}
+button{font-family:inherit;cursor:pointer}
+nav button{background:transparent;color:white;border:0;padding:9px 11px}
+nav button:hover{color:var(--blue)}
+.container{width:92%;max-width:1200px;margin:30px auto}
+.hidden{display:none!important}
+.hero{text-align:center;padding:65px 12px}
+.hero h1{font:800 clamp(30px,5vw,55px) Orbitron;background:linear-gradient(90deg,#00d9ff,#a78bfa,#00ffa3);background-clip:text;color:transparent;margin-bottom:18px}
+.hero p{color:var(--muted);line-height:1.9;max-width:720px;margin:auto}
+.hero-buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:25px}
+.card,.service-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;margin-bottom:20px;box-shadow:0 0 24px rgba(0,217,255,.06)}
+.card h2{font:700 20px Orbitron;color:var(--blue);margin-bottom:18px}
+.card h3{color:var(--blue);margin:12px 0}
+.btn{border:1px solid var(--blue);padding:11px 18px;border-radius:8px;background:linear-gradient(120deg,#007bff,#703cff);color:white;font-weight:600;margin:4px}
+.btn.secondary{background:transparent;color:var(--blue)}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.section-title{text-align:center;font:700 21px Orbitron;color:var(--blue);margin:30px 0 20px}
+.services,.stats,.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:15px}
+.service-card{text-align:center;cursor:pointer;transition:.2s}
+.service-card:hover{transform:translateY(-4px);border-color:var(--blue)}
+.service-icon{font-size:32px}
+.service-card h3{color:var(--blue);margin:8px 0}
+.service-card p{font-size:13px;color:var(--muted);line-height:1.6}
+label{display:block;color:#c5d9f5;font-size:13px;margin:12px 0 6px}
+input,select,textarea{width:100%;padding:12px;background:#071326;border:1px solid var(--border);border-radius:8px;color:white;font:14px Poppins;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--blue)}
+textarea{min-height:100px;resize:vertical}
+.field{margin-bottom:10px}
+.muted{color:var(--muted);font-size:13px;line-height:1.7}
+.message{margin:12px 0;color:var(--green);font-size:14px;overflow-wrap:anywhere}
+.stat{padding:17px;background:rgba(0,217,255,.06);border:1px solid var(--border);border-radius:11px}
+.stat small{color:var(--muted)}
+.stat strong{display:block;font:700 25px Orbitron;color:var(--blue);margin-top:8px}
+.table-wrap{overflow:auto}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:13px}
+th,td{padding:11px;border-bottom:1px solid rgba(255,255,255,.09);text-align:left}
+th{color:var(--blue);background:#102b4b}
+.status{min-width:125px;padding:7px}
+.pill{display:inline-block;border:1px solid var(--border);padding:5px 9px;border-radius:20px;color:var(--blue);font-size:12px}
+dialog{margin:auto;width:min(92%,560px);max-height:85vh;overflow:auto;background:#09172b;color:white;border:1px solid var(--blue);border-radius:14px}
+dialog::backdrop{background:#000b}
+.dialog-inner{padding:22px}
+.detail-line{padding:7px 0;border-bottom:1px solid #ffffff12;overflow-wrap:anywhere}
+footer{margin-top:55px;padding:25px;text-align:center;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
+@media(max-width:650px){header{justify-content:center}nav{justify-content:center}.container{width:95%}.hero{padding:40px 5px}.card{padding:16px}}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="logo">A TECH <span>STUDIO</span></div>
+  <nav>
+    <button onclick="showPage('home')">Home</button>
+    <button onclick="showPage('servicesPage')">Services</button>
+    <button onclick="showPage('authPage')">Login / Register</button>
+    <button onclick="openDashboard()">My Dashboard</button>
+    <button onclick="showPage('track')">Track</button>
+    <button onclick="showPage('adminLogin')">Admin</button>
+  </nav>
+</header>
+
+<main class="container">
+
+<section id="home">
+ <div class="hero">
+  <h1>A TECH STUDIO</h1>
+  <p>Your Digital World, Our Technology.<br>आधुनिक डिजिटल सेवाओं के लिए आपका डिजिटल सहायता प्लेटफॉर्म।</p>
+  <div class="hero-buttons">
+   <button class="btn" onclick="showPage('servicesPage')">Explore Services</button>
+   <button class="btn secondary" onclick="showPage('authPage')">Create Account / Login</button>
+   <button class="btn secondary" onclick="showPage('track')">Track Application</button>
+  </div>
+ </div>
+
+ <h2 class="section-title">OUR DIGITAL SERVICES</h2>
+ <div id="homeServices" class="services"></div>
+
+ <div class="card" style="margin-top:25px">
+  <h2>About A TECH STUDIO</h2>
+  <p class="muted">A TECH STUDIO एक डिजिटल सहायता प्लेटफॉर्म है जहाँ यूज़र उपलब्ध सेवाओं के लिए आवेदन कर सकते हैं और अपने आवेदन की स्थिति देख सकते हैं। यह प्लेटफॉर्म सरकारी विभाग या सरकारी पोर्टल नहीं है। सरकारी सेवाओं के अंतिम निर्णय और प्रमाणपत्र संबंधित सरकारी विभाग के नियमों पर निर्भर करते हैं।</p>
+  <h3>Contact Us</h3>
+  <p class="muted">Phone / WhatsApp: <a style="color:var(--blue)" href="https://wa.me/916267637208" target="_blank" rel="noopener">6267637208</a><br>Email: <a style="color:var(--blue)" href="mailto:anandthakurthaakur572@gmail.com">anandthakurthaakur572@gmail.com</a></p>
+  <h3>Help & Support</h3>
+  <p class="muted">अपने आवेदन की Request ID सुरक्षित रखें। सहायता के लिए ऊपर दिए संपर्क माध्यमों का उपयोग करें।</p>
+ </div>
+</section>
+
+<section id="servicesPage" class="hidden">
+ <h2 class="section-title">सभी डिजिटल सेवाएँ</h2>
+ <p class="muted" style="text-align:center;margin-bottom:18px">किसी सेवा पर क्लिक करके उसकी जानकारी भरें। आवेदन करने के लिए पहले लॉगिन आवश्यक है।</p>
+ <div id="allServices" class="services"></div>
+</section>
+
+<section id="authPage" class="hidden">
+ <div class="grid">
+  <div class="card">
+   <h2>नया अकाउंट बनाएँ</h2>
+   <form id="registerForm">
+    <label>पूरा नाम</label><input id="regName" maxlength="80" required>
+    <label>मोबाइल नंबर</label><input id="regMobile" type="tel" inputmode="numeric" pattern="[0-9]{10}" maxlength="10" required>
+    <label>Email</label><input id="regEmail" type="email" maxlength="120" required>
+    <label>Password (कम से कम 6 अक्षर)</label><input id="regPassword" type="password" minlength="6" required>
+    <label>Password दोबारा लिखें</label><input id="regConfirm" type="password" minlength="6" required>
+    <button class="btn" type="submit">Create Account</button>
+   </form>
+   <p id="registerMessage" class="message"></p>
+  </div>
+
+  <div class="card">
+   <h2>User Login</h2>
+   <form id="userLoginForm">
+    <label>Email</label><input id="loginEmail" type="email" required>
+    <label>Password</label><input id="loginPassword" type="password" required>
+    <button class="btn" type="submit">Login</button>
+    <button class="btn secondary" type="button" onclick="forgotPassword()">
+ Forgot Password?
+</button>
+   </form>
+   <p id="userLoginMessage" class="message"></p>
+   <p class="muted">पासवर्ड भूलने पर Firebase Authentication में Email/Password reset सुविधा जोड़कर उपलब्ध कराई जा सकती है।</p>
+  </div>
+ </div>
+</section>
+
+<section id="userDashboard" class="hidden">
+ <div class="card">
+  <h2>My User Dashboard</h2>
+  <p>स्वागत है, <b id="welcomeName"></b></p>
+  <p class="muted">आपकी ATS User ID: <span class="pill" id="myAtsId">लोड हो रही है...</span></p>
+  <div class="hero-buttons" style="justify-content:flex-start">
+   <button class="btn" onclick="showPage('servicesPage')">Apply for Service</button>
+   <button class="btn secondary" onclick="loadMyApplications()">Refresh Applications</button>
+   <button class="btn secondary" onclick="showProfile()">Edit Profile</button>
+   <button class="btn secondary" onclick="changeMyPassword()">Change Password</button>
+   <button class="btn secondary" onclick="userLogout()">Logout</button>
+  </div>
+ </div>
+
+ <div class="card">
+  <h2>My Applications</h2>
+  <div class="table-wrap">
+   <table>
+    <thead><tr><th>Request ID</th><th>Service</th><th>Status</th><th>Date</th></tr></thead>
+    <tbody id="myApplications"></tbody>
+   </table>
+  </div>
+  <p id="myAppMessage" class="message"></p>
+ </div>
+
+ <div class="card">
+  <h2>My Notifications</h2>
+  <div id="myNotifications" class="muted">अभी कोई नोटिफिकेशन नहीं है।</div>
+ </div>
+</section>
+
+<section id="profilePage" class="hidden">
+ <div class="card">
+  <h2>My Profile</h2>
+  <form id="profileForm">
+   <label>पूरा नाम</label><input id="profileName" maxlength="80" required>
+   <label>मोबाइल नंबर</label><input id="profileMobile" maxlength="10" pattern="[0-9]{10}" required>
+   <label>वैकल्पिक मोबाइल (वैकल्पिक)</label><input id="profileAltMobile" maxlength="10">
+   <label>राज्य (वैकल्पिक)</label><input id="profileState" maxlength="60">
+   <label>जिला (वैकल्पिक)</label><input id="profileDistrict" maxlength="60">
+   <label>गाँव / शहर (वैकल्पिक)</label><input id="profileCity" maxlength="80">
+   <button class="btn" type="submit">Save Profile</button>
+   <button class="btn secondary" type="button" onclick="openDashboard()">Back</button>
+  </form>
+  <p id="profileMessage" class="message"></p>
+ </div>
+</section>
+<section id="track" class="hidden">
+ <div class="card">
+  <h2>Track Your Application</h2>
+  <p class="muted">अपना Request ID डालकर आवेदन की स्थिति देखें। इसके लिए लॉगिन जरूरी है।</p>
+  <label>Request ID</label>
+  <input id="trackId" placeholder="उदाहरण: ATS-XXXXXXXX">
+  <button class="btn" onclick="trackApplication()">Track Application</button>
+  <div id="trackResult" class="message"></div>
+ </div>
+</section>
+
+<section id="adminLogin" class="hidden">
+ <div class="card" style="max-width:500px;margin:auto">
+  <h2>Admin Login</h2>
+  <form id="adminLoginForm">
+   <label>Admin Email</label>
+   <input id="adminEmail" type="email" required>
+   <label>Password</label>
+   <input id="adminPassword" type="password" required>
+   <button class="btn" type="submit">Admin Login</button>
+  </form>
+  <p id="adminLoginMessage" class="message"></p>
+ </div>
+</section>
+
+<section id="adminDashboard" class="hidden">
+ <div class="card">
+  <h2>Admin Dashboard</h2>
+  <p class="muted">A TECH STUDIO – Application Management System</p>
+  <div class="hero-buttons" style="justify-content:flex-start">
+   <button class="btn secondary" onclick="loadAdminData()">Refresh Data</button>
+   <button class="btn secondary" onclick="adminLogout()">Logout Admin</button>
+  </div>
+ </div>
+
+ <div class="stats">
+  <div class="stat"><small>Total Applications</small><strong id="totalApps">0</strong></div>
+  <div class="stat"><small>Pending</small><strong id="pendingApps">0</strong></div>
+  <div class="stat"><small>Processing</small><strong id="processingApps">0</strong></div>
+  <div class="stat"><small>Completed</small><strong id="completedApps">0</strong></div>
+  <div class="stat"><small>Total Users</small><strong id="totalUsers">0</strong></div>
+ </div>
+
+ <div class="card" style="margin-top:20px">
+  <h2>All Applications</h2>
+  <input id="adminSearch" placeholder="नाम, मोबाइल या Request ID से खोजें..." oninput="renderAdminApplications()">
+  <div class="table-wrap" style="margin-top:15px">
+   <table>
+    <thead>
+     <tr>
+      <th>Request ID</th>
+      <th>Name</th>
+      <th>Mobile</th>
+      <th>Service</th>
+      <th>Status</th>
+      <th>Date</th>
+      <th>Action</th>
+     </tr>
+    </thead>
+    <tbody id="adminApplications"></tbody>
+   </table>
+  </div>
+  <p id="adminMessage" class="message"></p>
+ </div>
+
+ <div class="card">
+  <h2>Send Notification</h2>
+  <label>Notification Message</label>
+  <textarea id="notificationText" maxlength="500" placeholder="अपडेट या सूचना लिखें..."></textarea>
+  <button class="btn" onclick="sendNotification()">Send Notification</button>
+  <p id="notificationMessage" class="message"></p>
+ </div>
+
+ <div class="card">
+  <h2>Registered Users</h2>
+  <div class="table-wrap">
+   <table>
+    <thead>
+     <tr><th>User ID</th><th>Name</th><th>Email</th><th>Mobile</th></tr>
+    </thead>
+    <tbody id="adminUsers"></tbody>
+   </table>
+  </div>
+ </div>
+</section>
+
+<section id="applyPage" class="hidden">
+ <div class="card">
+  <h2 id="applyTitle">Service Application</h2>
+  <p class="muted">कृपया सही जानकारी भरें। अनावश्यक संवेदनशील जानकारी जैसे OTP, पासवर्ड या बैंक PIN यहाँ न डालें।</p>
+  <form id="applicationForm">
+   <div id="serviceFields"></div>
+   <button class="btn" type="submit">Submit Application</button>
+   <button class="btn secondary" type="button" onclick="showPage('servicesPage')">Cancel</button>
+  </form>
+  <p id="applicationMessage" class="message"></p>
+ </div>
+</section>
+
+</main>
+
+<dialog id="detailsDialog">
+ <div class="dialog-inner">
+  <h2 style="color:var(--blue);margin-bottom:15px">Application Details</h2>
+  <div id="detailsContent"></div>
+  <button class="btn" onclick="document.getElementById('detailsDialog').close()">Close</button>
+ </div>
+</dialog>
+
+<footer>
+ <p>© 2026 A TECH STUDIO | All Rights Reserved</p>
+ <p>Digital Assistance Platform | Secure User Dashboard</p>
+</footer>
+
+<!-- Firebase SDK -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+
+import {
+  getAuth,
+ createUserWithEmailAndPassword,
+ signInWithEmailAndPassword,
+ onAuthStateChanged,
+ signOut,
+ updatePassword,
+ sendPasswordResetEmail
+} from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
+
+import {
+ getFirestore,
+ collection,
+ doc,
+ setDoc,
+ getDoc,
+ getDocs,
+ addDoc,
+ updateDoc,
+ query,
+ where,
+ orderBy,
+ serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.6.0/firebase-firestore.js";
+
+// अपनी पुरानी Firebase Configuration यहाँ रखी गई है
+const firebaseConfig = {
+ apiKey: "AIzaSyBParb9YX-PhN3X6q3NDsb-4N4wcEvS4_c",
+ authDomain: "a-tech-studio.firebaseapp.com",
+ projectId: "a-tech-studio",
+ storageBucket: "a-tech-studio.firebasestorage.app",
+ messagingSenderId: "404574534503",
+ appId: "1:404574534503:web:791be1bcaea9467ebb8dc2",
+ measurementId: "G-YB7N2QMDB3"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+// Admin UID
+const ADMIN_UID = "LuuWr4jzuzMrFtt6gNd6NbH472d2";
+
+let currentUser = null;
+let currentProfile = null;
+let allAdminApplications = [];
+let selectedService = "";
+
+const services = [
+ {name:"Online Form Assistance",icon:"📝",description:"ऑनलाइन फॉर्म भरने में सहायता"},
+ {name:"PDF Services",icon:"📄",description:"PDF बनाना, जोड़ना और अन्य सहायता"},
+ {name:"Photo Editing",icon:"🖼️",description:"फोटो एडिटिंग और डिजाइन सहायता"},
+ {name:"Document Typing",icon:"⌨️",description:"हिंदी और अंग्रेजी टाइपिंग"},
+ {name:"Caste Certificate Assistance",icon:"📋",description:"जाति प्रमाणपत्र आवेदन में सहायता"},
+ {name:"Income Certificate Assistance",icon:"💰",description:"आय प्रमाणपत्र आवेदन में सहायता"},
+ {name:"Domicile Certificate Assistance",icon:"🏠",description:"निवास प्रमाणपत्र आवेदन में सहायता"},
+ {name:"Scholarship Assistance",icon:"🎓",description:"छात्रवृत्ति आवेदन में सहायता"},
+ {name:"Farmer Assistance",icon:"🌾",description:"किसान सेवाओं में सहायता"},
+ {name:"Employment Assistance",icon:"💼",description:"रोजगार आवेदन में सहायता"},
+ {name:"Other Digital Services",icon:"🌐",description:"अन्य डिजिटल सेवाएँ"}
+];
+
+function safe(value){
+ return String(value ?? "").replace(/[&<>"']/g, c => ({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ }[c]));
+}
+
+function showPage(id){
+ document.querySelectorAll("main section").forEach(section=>{
+  section.classList.add("hidden");
+ });
+ const target = document.getElementById(id);
+ if(target) target.classList.remove("hidden");
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+window.showPage = showPage;
+
+function renderServices(){
+ const html = services.map((service,index)=>`
+  <div class="service-card" onclick="selectService(${index})">
+   <div class="service-icon">${service.icon}</div>
+   <h3>${safe(service.name)}</h3>
+   <p>${safe(service.description)}</p>
+   <button class="btn">Apply Now</button>
+  </div>
+ `).join("");
+
+ document.getElementById("homeServices").innerHTML = html;
+ document.getElementById("allServices").innerHTML = html;
+}
+
+window.selectService = function(index){
+ const service = services[index];
+ if(!service) return;
+
+ if(!currentUser){
+  alert("सेवा के लिए पहले Login करें।");
+  showPage("authPage");
+  return;
+ }
+
+ selectedService = service.name;
+ document.getElementById("applyTitle").textContent = service.name;
+ buildServiceFields(service.name);
+ showPage("applyPage");
+};
+
+function buildServiceFields(service){
+ const box = document.getElementById("serviceFields");
+
+ const common = `
+  <div class="field">
+   <label>पूरा नाम</label>
+   <input name="applicantName" maxlength="80" required value="${safe(currentProfile?.name || "")}">
+  </div>
+  <div class="field">
+   <label>मोबाइल नंबर</label>
+   <input name="mobile" maxlength="10" pattern="[0-9]{10}" required value="${safe(currentProfile?.mobile || "")}">
+  </div>
+  <div class="field">
+   <label>जिला</label>
+   <input name="district" maxlength="80" required>
+  </div>
+  <div class="field">
+   <label>गाँव / शहर</label>
+   <input name="village" maxlength="100">
+  </div>
+ `;
+
+ let extra = "";
+
+ if(service.includes("Certificate")){
+  extra = `
+   <div class="field">
+    <label>आवेदन का उद्देश्य</label>
+    <select name="purpose" required>
+     <option value="">चुनें</option>
+     <option>शिक्षा</option><option>सरकारी योजना</option>
+     <option>नौकरी</option><option>अन्य</option>
+    </select>
+   </div>
+   <div class="field">
+    <label>अतिरिक्त जानकारी</label>
+    <textarea name="extra" maxlength="1000"></textarea>
+   </div>`;
+ }else if(service.includes("Scholarship")){
+  extra = `
+   <div class="field"><label>कॉलेज / स्कूल</label><input name="institution" maxlength="150" required></div>
+   <div class="field"><label>कक्षा / कोर्स</label><input name="course" maxlength="100" required></div>
+   <div class="field"><label>सत्र</label><input name="session" maxlength="30"></div>`;
+ }else if(service.includes("Farmer")){
+  extra = `
+   <div class="field"><label>किसान का नाम</label><input name="farmerName" maxlength="100" required></div>
+   <div class="field"><label>सेवा का विवरण</label><textarea name="extra" maxlength="1000" required></textarea></div>`;
+ }else if(service.includes("Employment")){
+  extra = `
+   <div class="field"><label>शैक्षणिक योग्यता</label><input name="qualification" maxlength="100" required></div>
+   <div class="field"><label>रोजगार संबंधी जानकारी</label><textarea name="extra" maxlength="1000"></textarea></div>`;
+ }else if(service.includes("Photo")){
+  extra = `
+   <div class="field"><label>फोटो एडिटिंग की आवश्यकता</label><textarea name="extra" maxlength="1000" required></textarea></div>`;
+ }else if(service.includes("PDF")){
+  extra = `
+   <div class="field"><label>PDF सेवा का विवरण</label><textarea name="extra" maxlength="1000" required></textarea></div>`;
+ }else{
+  extra = `
+   <div class="field"><label>सेवा की पूरी जानकारी</label><textarea name="extra" maxlength="1500" required></textarea></div>`;
+ }
+
+ box.innerHTML = common + extra;
+}
+// USER REGISTRATION
+document.getElementById("registerForm").addEventListener("submit", async e=>{
+ e.preventDefault();
+
+ const name = document.getElementById("regName").value.trim();
+ const mobile = document.getElementById("regMobile").value.trim();
+ const email = document.getElementById("regEmail").value.trim();
+ const password = document.getElementById("regPassword").value;
+ const confirm = document.getElementById("regConfirm").value;
+ const message = document.getElementById("registerMessage");
+
+ if(password !== confirm){
+  message.textContent = "दोनों Password एक जैसे नहीं हैं।";
+  return;
+ }
+
+ try{
+  const credential = await createUserWithEmailAndPassword(auth,email,password);
+  const uid = credential.user.uid;
+  const atsId = "ATS-" + uid.slice(-8).toUpperCase();
+
+  const profile = {
+   uid,
+   atsId,
+   name,
+   mobile,
+   email,
+   role:"user",
+   createdAt:serverTimestamp()
+  };
+
+  await setDoc(doc(db,"users",uid),profile);
+  currentProfile = profile;
+  message.textContent = "Account सफलतापूर्वक बन गया!";
+  openDashboard();
+ }catch(error){
+  console.error(error);
+  message.textContent = "Registration Error: " + error.message;
+ }
+});
+
+// USER LOGIN
+document.getElementById("userLoginForm").addEventListener("submit",async e=>{
+ e.preventDefault();
+
+ const email = document.getElementById("loginEmail").value.trim();
+ const password = document.getElementById("loginPassword").value;
+ const message = document.getElementById("userLoginMessage");
+
+ try{
+  await signInWithEmailAndPassword(auth,email,password);
+  message.textContent = "Login सफल!";
+  openDashboard();
+ }catch(error){
+  message.textContent = "Login Error: " + error.message;
+ }
+});
+// FORGOT PASSWORD
+window.forgotPassword = async function() {
+    const email = document.getElementById("loginEmail").value.trim();
+    const message = document.getElementById("userLoginMessage");
+
+    if (!email) {
+        message.textContent = "पहले अपना Email लिखें।";
+        document.getElementById("loginEmail").focus();
+        return;
+    }
+
+    try {
+        await sendPasswordResetEmail(auth, email);
+
+        message.textContent =
+            "Password Reset Link आपके Email पर भेज दिया गया है। Inbox और Spam Folder चेक करें।";
+
+    } catch (error) {
+        console.error(error);
+        message.textContent = "समस्या: " + error.message;
+    }
+};
+
+// AUTH STATE
+onAuthStateChanged(auth,async user=>{
+ currentUser = user;
+
+ if(user){
+  try{
+   const snap = await getDoc(doc(db,"users",user.uid));
+   currentProfile = snap.exists() ? snap.data() : null;
+
+   if(currentProfile && currentProfile.role === "user"){
+    document.getElementById("welcomeName").textContent = currentProfile.name || "";
+    document.getElementById("myAtsId").textContent = currentProfile.atsId || "";
+   }
+  }catch(error){
+   console.error("Profile error:",error);
+  }
+ }else{
+  currentProfile = null;
+ }
+});
+
+window.openDashboard = async function(){
+ if(!currentUser){
+  alert("पहले Login करें।");
+  showPage("authPage");
+  return;
+ }
+
+ if(currentUser.uid === ADMIN_UID){
+  await loadAdminData();
+  showPage("adminDashboard");
+  return;
+ }
+
+ if(!currentProfile){
+  const snap = await getDoc(doc(db,"users",currentUser.uid));
+  currentProfile = snap.exists() ? snap.data() : null;
+ }
+
+ if(!currentProfile){
+  alert("आपकी Profile नहीं मिली। कृपया सहायता लें।");
+  return;
+ }
+
+ document.getElementById("welcomeName").textContent = currentProfile.name || "";
+ document.getElementById("myAtsId").textContent = currentProfile.atsId || "";
+
+ showPage("userDashboard");
+ await loadMyApplications();
+ await loadMyNotifications();
+};
+
+// USER LOGOUT
+window.userLogout = async function(){
+ await signOut(auth);
+ currentUser = null;
+ currentProfile = null;
+ alert("Logout सफल हुआ।");
+ showPage("home");
+};
+
+// ADMIN LOGIN
+document.getElementById("adminLoginForm").addEventListener("submit",async e=>{
+ e.preventDefault();
+
+ const email = document.getElementById("adminEmail").value.trim();
+ const password = document.getElementById("adminPassword").value;
+ const message = document.getElementById("adminLoginMessage");
+
+ try{
+  const result = await signInWithEmailAndPassword(auth,email,password);
+
+  if(result.user.uid !== ADMIN_UID){
+   await signOut(auth);
+   message.textContent = "यह अकाउंट Admin नहीं है।";
+   return;
+  }
+
+  message.textContent = "Admin Login सफल!";
+  await loadAdminData();
+  showPage("adminDashboard");
+ }catch(error){
+  message.textContent = "Admin Login Error: " + error.message;
+ }
+});
+
+window.adminLogout = async function(){
+ await signOut(auth);
+ currentUser = null;
+ currentProfile = null;
+ showPage("home");
+};
+
+// SUBMIT APPLICATION
+document.getElementById("applicationForm").addEventListener("submit",async e=>{
+ e.preventDefault();
+
+ if(!currentUser){
+  alert("पहले Login करें।");
+  showPage("authPage");
+  return;
+ }
+
+ const message = document.getElementById("applicationMessage");
+ const form = e.target;
+ const data = Object.fromEntries(new FormData(form).entries());
+
+ const application = {
+  ownerUid:currentUser.uid,
+  atsId:currentProfile?.atsId || "",
+  name:String(data.applicantName || "").trim(),
+  mobile:String(data.mobile || "").trim(),
+  service:selectedService,
+  details:Object.entries(data)
+   .filter(([key])=>!["applicantName","mobile"].includes(key))
+   .map(([key,value])=>key+": "+value)
+   .join("\n"),
+  status:"Pending",
+  createdAt:serverTimestamp()
+ };
+
+ try{
+  const ref = await addDoc(collection(db,"applications"),application);
+  message.textContent = "आवेदन सफलतापूर्वक जमा हुआ! Request ID: " + ref.id;
+  form.reset();
+ }catch(error){
+  console.error(error);
+  message.textContent = "आवेदन जमा नहीं हुआ: " + error.message;
+ }
+});
+
+// MY APPLICATIONS
+window.loadMyApplications = async function(){
+ const box = document.getElementById("myApplications");
+ const message = document.getElementById("myAppMessage");
+
+ if(!currentUser){
+  message.textContent = "पहले Login करें।";
+  return;
+ }
+
+ box.innerHTML = "<tr><td colspan='4'>लोड हो रहा है...</td></tr>";
+
+ try{
+  const q = query(
+   collection(db,"applications"),
+   where("ownerUid","==",currentUser.uid)
+  );
+
+  const snap = await getDocs(q);
+
+  if(snap.empty){
+   box.innerHTML = "<tr><td colspan='4'>अभी कोई आवेदन नहीं है।</td></tr>";
+   return;
+  }
+
+  const records = [];
+  snap.forEach(item=>records.push({id:item.id,...item.data()}));
+
+  records.sort((a,b)=>(b.createdAt?.seconds || 0)-(a.createdAt?.seconds || 0));
+
+  box.innerHTML = records.map(item=>`
+   <tr>
+    <td>${safe(item.id)}</td>
+    <td>${safe(item.service)}</td>
+    <td><span class="pill">${safe(item.status)}</span></td>
+    <td>${item.createdAt?.toDate ? item.createdAt.toDate().toLocaleDateString("hi-IN") : "अभी"}</td>
+   </tr>
+  `).join("");
+
+  message.textContent = "कुल आवेदन: " + records.length;
+ }catch(error){
+  console.error(error);
+  message.textContent = "डेटा लोड नहीं हुआ: " + error.message;
+ }
+};
+
+// TRACK APPLICATION
+window.trackApplication = async function(){
+ const id = document.getElementById("trackId").value.trim();
+ const box = document.getElementById("trackResult");
+
+ if(!currentUser){
+  box.textContent = "Tracking के लिए पहले Login करें।";
+  showPage("authPage");
+  return;
+ }
+
+ if(!id){
+  box.textContent = "Request ID डालें।";
+  return;
+ }
+
+ box.textContent = "जाँच हो रही है...";
+
+ try{
+  const snap = await getDoc(doc(db,"applications",id));
+
+  if(!snap.exists()){
+   box.textContent = "यह Request ID नहीं मिली।";
+   return;
+  }
+
+  const data = snap.data();
+
+  if(data.ownerUid !== currentUser.uid && currentUser.uid !== ADMIN_UID){
+   box.textContent = "आपको इस आवेदन की जानकारी देखने की अनुमति नहीं है।";
+   return;
+  }
+
+  box.innerHTML = `
+   <div class="card">
+    <p><b>Request ID:</b> ${safe(id)}</p>
+    <p><b>नाम:</b> ${safe(data.name)}</p>
+    <p><b>सेवा:</b> ${safe(data.service)}</p>
+    <p><b>Status:</b> <span class="pill">${safe(data.status)}</span></p>
+    <p><b>विवरण:</b> ${safe(data.details).replace(/\n/g,"<br>")}</p>
+   </div>`;
+ }catch(error){
+  console.error(error);
+  box.textContent = "Tracking Error: " + error.message;
+ }
+};
+
+// PROFILE UPDATE
+window.showProfile = function(){
+ if(!currentProfile){
+  alert("Profile उपलब्ध नहीं है।");
+  return;
+ }
+
+ document.getElementById("profileName").value = currentProfile.name || "";
+ document.getElementById("profileMobile").value = currentProfile.mobile || "";
+ document.getElementById("profileAltMobile").value = currentProfile.altMobile || "";
+ document.getElementById("profileState").value = currentProfile.state || "";
+ document.getElementById("profileDistrict").value = currentProfile.district || "";
+ document.getElementById("profileCity").value = currentProfile.city || "";
+
+ showPage("profilePage");
+};
+
+document.getElementById("profileForm").addEventListener("submit",async e=>{
+ e.preventDefault();
+
+ if(!currentUser || !currentProfile) return;
+
+ const message = document.getElementById("profileMessage");
+
+ const updated = {
+  name:document.getElementById("profileName").value.trim(),
+  mobile:document.getElementById("profileMobile").value.trim(),
+  altMobile:document.getElementById("profileAltMobile").value.trim(),
+  state:document.getElementById("profileState").value.trim(),
+  district:document.getElementById("profileDistrict").value.trim(),
+  city:document.getElementById("profileCity").value.trim()
+ };
+
+ try{
+  await updateDoc(doc(db,"users",currentUser.uid),updated);
+  currentProfile = {...currentProfile,...updated};
+  message.textContent = "Profile अपडेट हो गई।";
+ }catch(error){
+  message.textContent = "Profile Error: " + error.message;
+ }
+});
+
+// PASSWORD UPDATE
+window.changeMyPassword = async function(){
+ if(!currentUser){
+  alert("पहले Login करें।");
+  return;
+ }
+
+ const password = prompt("नया Password डालें (कम से कम 6 अक्षर):");
+ if(!password) return;
+
+ if(password.length < 6){
+  alert("Password कम से कम 6 अक्षर का होना चाहिए।");
+  return;
+ }
+
+ try{
+  await updatePassword(currentUser,password);
+  alert("Password सफलतापूर्वक बदल गया।");
+ }catch(error){
+  alert("Password बदलने में समस्या: " + error.message);
+ }
+};
+
+// USER NOTIFICATIONS
+window.loadMyNotifications = async function(){
+ const box = document.getElementById("myNotifications");
+
+ try{
+  const snap = await getDocs(collection(db,"notifications"));
+
+  if(snap.empty){
+   box.textContent = "अभी कोई नोटिफिकेशन नहीं है।";
+   return;
+  }
+
+  const items = [];
+  snap.forEach(item=>items.push(item.data()));
+
+  box.innerHTML = items
+   .sort((a,b)=>(b.createdAt?.seconds || 0)-(a.createdAt?.seconds || 0))
+   .map(item=>`
+    <div class="detail-line">
+     ${safe(item.message)}
+     <small class="muted">${item.createdAt?.toDate ? item.createdAt.toDate().toLocaleString("hi-IN") : ""}</small>
+    </div>
+   `).join("");
+
+ }catch(error){
+  console.error(error);
+  box.textContent = "Notifications लोड नहीं हुए।";
+ }
+};
+// ADMIN DATA
+window.loadAdminData = async function(){
+ if(!currentUser || currentUser.uid !== ADMIN_UID){
+  alert("Admin Access Denied!");
+  return;
+ }
+
+ try{
+  const snap = await getDocs(collection(db,"applications"));
+
+  allAdminApplications = [];
+  snap.forEach(item=>{
+   allAdminApplications.push({id:item.id,...item.data()});
+  });
+
+  const total = allAdminApplications.length;
+  const pending = allAdminApplications.filter(x=>x.status==="Pending").length;
+  const processing = allAdminApplications.filter(x=>x.status==="Processing").length;
+  const completed = allAdminApplications.filter(x=>x.status==="Completed").length;
+
+  document.getElementById("totalApps").textContent = total;
+  document.getElementById("pendingApps").textContent = pending;
+  document.getElementById("processingApps").textContent = processing;
+  document.getElementById("completedApps").textContent = completed;
+
+  renderAdminApplications();
+  await loadAdminUsers();
+
+ }catch(error){
+  console.error(error);
+  document.getElementById("adminMessage").textContent =
+   "Admin Data Error: " + error.message;
+ }
+};
+
+// ADMIN APPLICATION TABLE
+window.renderAdminApplications = function(){
+ const box = document.getElementById("adminApplications");
+ const search = (document.getElementById("adminSearch")?.value || "").toLowerCase();
+
+ const filtered = allAdminApplications.filter(item=>
+  [
+   item.id,
+   item.name,
+   item.mobile,
+   item.service,
+   item.atsId
+  ].some(value=>String(value || "").toLowerCase().includes(search))
+ );
+
+ if(!filtered.length){
+  box.innerHTML = "<tr><td colspan='7'>कोई आवेदन नहीं मिला।</td></tr>";
+  return;
+ }
+
+ box.innerHTML = filtered.map(item=>`
+  <tr>
+   <td>${safe(item.id)}</td>
+   <td>${safe(item.name)}</td>
+   <td>${safe(item.mobile)}</td>
+   <td>${safe(item.service)}</td>
+   <td>
+    <select class="status" onchange="updateApplicationStatus('${safe(item.id)}',this.value)">
+     ${["Pending","Processing","Completed","Rejected"].map(status=>
+      `<option value="${status}" ${item.status===status?"selected":""}>${status}</option>`
+     ).join("")}
+    </select>
+   </td>
+   <td>${item.createdAt?.toDate ? item.createdAt.toDate().toLocaleDateString("hi-IN") : "अभी"}</td>
+   <td><button class="btn secondary" onclick="viewApplication('${safe(item.id)}')">View</button></td>
+  </tr>
+ `).join("");
+};
+
+// UPDATE STATUS
+window.updateApplicationStatus = async function(id,status){
+ if(!currentUser || currentUser.uid !== ADMIN_UID){
+  alert("Admin Access Denied!");
+  return;
+ }
+
+ const allowed = ["Pending","Processing","Completed","Rejected"];
+
+ if(!allowed.includes(status)){
+  alert("Invalid Status");
+  return;
+ }
+
+ try{
+  await updateDoc(doc(db,"applications",id),{
+   status,
+   updatedAt:serverTimestamp()
+  });
+
+  const item = allAdminApplications.find(x=>x.id===id);
+  if(item) item.status = status;
+
+  renderAdminApplications();
+
+  document.getElementById("adminMessage").textContent =
+   "Application Status अपडेट हो गया।";
+
+  await loadAdminData();
+
+ }catch(error){
+  console.error(error);
+  alert("Status Update Error: " + error.message);
+ }
+};
+
+// VIEW APPLICATION
+window.viewApplication = function(id){
+ const item = allAdminApplications.find(x=>x.id===id);
+
+ if(!item) return;
+
+ const content = document.getElementById("detailsContent");
+
+ content.innerHTML = `
+  <div class="detail-line"><b>Request ID:</b> ${safe(item.id)}</div>
+  <div class="detail-line"><b>User ID:</b> ${safe(item.ownerUid)}</div>
+  <div class="detail-line"><b>नाम:</b> ${safe(item.name)}</div>
+  <div class="detail-line"><b>मोबाइल:</b> ${safe(item.mobile)}</div>
+  <div class="detail-line"><b>सेवा:</b> ${safe(item.service)}</div>
+  <div class="detail-line"><b>Status:</b> ${safe(item.status)}</div>
+  <div class="detail-line"><b>विवरण:</b><br>${safe(item.details).replace(/\n/g,"<br>")}</div>
+ `;
+
+ document.getElementById("detailsDialog").showModal();
+};
+
+// ADMIN USERS
+window.loadAdminUsers = async function(){
+ const box = document.getElementById("adminUsers");
+
+ try{
+  const snap = await getDocs(collection(db,"users"));
+
+  box.innerHTML = "";
+  document.getElementById("totalUsers").textContent = snap.size;
+
+  if(snap.empty){
+   box.innerHTML = "<tr><td colspan='4'>अभी कोई User नहीं है।</td></tr>";
+   return;
+  }
+
+  snap.forEach(item=>{
+   const user = item.data();
+
+   box.innerHTML += `
+    <tr>
+     <td>${safe(user.atsId || user.uid)}</td>
+     <td>${safe(user.name)}</td>
+     <td>${safe(user.email)}</td>
+     <td>${safe(user.mobile)}</td>
+    </tr>
+   `;
+  });
+
+ }catch(error){
+  console.error(error);
+  box.innerHTML = "<tr><td colspan='4'>Users लोड नहीं हुए।</td></tr>";
+ }
+};
+
+// SEND NOTIFICATION
+window.sendNotification = async function(){
+ if(!currentUser || currentUser.uid !== ADMIN_UID){
+  alert("Admin Access Denied!");
+  return;
+ }
+
+ const message = document.getElementById("notificationText").value.trim();
+ const output = document.getElementById("notificationMessage");
+
+ if(!message){
+  output.textContent = "पहले Notification लिखें।";
+  return;
+ }
+
+ try{
+  await addDoc(collection(db,"notifications"),{
+   message,
+   createdAt:serverTimestamp(),
+   createdBy:currentUser.uid
+  });
+
+  document.getElementById("notificationText").value = "";
+  output.textContent = "Notification भेज दिया गया।";
+
+ }catch(error){
+  console.error(error);
+  output.textContent = "Notification Error: " + error.message;
+ }
+};
+
+// INITIALIZE APPLICATION
+renderServices();
+showPage("home");
+
+console.log("A TECH STUDIO Firebase Connected!");
+console.log("A TECH STUDIO Application Ready!");
+
+// PWA SERVICE WORKER
+if("serviceWorker" in navigator){
+ window.addEventListener("load",()=>{
+  navigator.serviceWorker.register("./service-worker.js")
+   .then(registration=>{
+    console.log("A TECH STUDIO Offline Support Ready!",registration);
+   })
+   .catch(error=>{
+    console.error("Service Worker Error:",error);
+   });
+ });
+}
+
+</script>
+</body>
+</html>
