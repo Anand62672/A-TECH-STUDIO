@@ -343,7 +343,13 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+const isNativeApp = !!window.Capacitor?.isNativePlatform?.();
+
+const auth = isNativeApp
+  ? initializeAuth(app, {
+      persistence: inMemoryPersistence
+    })
+  : getAuth(app);
 const db = getFirestore(app);
 
 // Admin UID
@@ -511,9 +517,19 @@ document.getElementById("registerForm").addEventListener("submit", async e=>{
   };
 
   await setDoc(doc(db,"users",uid),profile);
+  if (isNativeApp) {
+  await signOut(auth);
+  currentUser = null;
+  currentProfile = null;
+
+  message.textContent =
+    "Account बन गया है! अब अपनी Email और Password से Login करें।";
+
+} else {
   currentProfile = profile;
   message.textContent = "Account सफलतापूर्वक बन गया!";
   openDashboard();
+}
  }catch(error){
   console.error(error);
   message.textContent = "Registration Error: " + error.message;
