@@ -60,6 +60,65 @@ dialog::backdrop{background:#000b}
 .detail-line{padding:7px 0;border-bottom:1px solid #ffffff12;overflow-wrap:anywhere}
 footer{margin-top:55px;padding:25px;text-align:center;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
 @media(max-width:650px){header{justify-content:center}nav{justify-content:center}.container{width:95%}.hero{padding:40px 5px}.card{padding:16px}}
+  /* MOBILE APP DESIGN */
+body.native-app {
+  background: #07111f;
+  padding-bottom: 75px;
+}
+
+.native-app header {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  border-radius: 0 0 18px 18px;
+}
+
+.native-app .container {
+  width: 100%;
+  max-width: 100%;
+  padding: 15px;
+}
+
+.native-app .card {
+  border-radius: 18px;
+  margin-bottom: 16px;
+  padding: 18px;
+}
+
+.native-app input,
+.native-app select,
+.native-app textarea {
+  width: 100%;
+  font-size: 16px;
+  padding: 13px;
+  border-radius: 12px;
+}
+
+.native-app button,
+.native-app .btn {
+  min-height: 46px;
+  border-radius: 12px;
+}
+
+.native-app nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.native-app nav button {
+  flex: 1 1 40%;
+}
+
+@media (max-width: 600px) {
+  .native-app h1 {
+    font-size: 25px;
+  }
+
+  .native-app h2 {
+    font-size: 21px;
+  }
+}
 </style>
 </head>
 
@@ -344,6 +403,9 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const isNativeApp = !!window.Capacitor?.isNativePlatform?.();
+  if (isNativeApp) {
+  document.body.classList.add("native-app");
+}
 
 const auth = isNativeApp
   ? initializeAuth(app, {
@@ -591,8 +653,12 @@ onAuthStateChanged(auth,async user=>{
   }catch(error){
    console.error("Profile error:",error);
   }
- }else{
+  }else{
   currentProfile = null;
+
+  if (isNativeApp) {
+   showPage("authPage");
+  }
  }
 });
 
